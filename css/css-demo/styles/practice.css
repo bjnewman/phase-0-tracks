@@ -13,3 +13,13 @@
 .accomps {
   font-size: .8em;
 }
+
+ul > li {
+color: blue;
+}
+
+ul:first-letter {
+font-size: 1.2em;
+} 
+
+
