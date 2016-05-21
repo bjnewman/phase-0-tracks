@@ -1,0 +1,25 @@
+#contact-info {
+  font-size: .8em;
+}
+
+.job {
+  background-color: #e9e5dc;
+  border-radius: 30px;
+  margin-top: 4px;
+  padding: 2px;
+  margin-bottom: 25px;
+}
+
+.accomps {
+  font-size: .8em;
+}
+
+ul > li {
+color: blue;
+}
+
+ul:first-letter {
+font-size: 1.2em;
+} 
+
+
