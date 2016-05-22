@@ -1,0 +1,23 @@
+.images {
+  margin-left:40%;
+  position:relative;
+}
+
+#octo {
+  margin: auto;
+  margin-top: 10%;
+}
+
+#hat {
+  position: absolute;
+  top:4%;
+  margin-left:-2%;
+  z-index: 2;
+}
+
+#glasses {
+  position:absolute;
+  top:47%;
+  margin-left:6%;
+  z-index: 1
+}
