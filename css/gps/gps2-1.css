@@ -24,26 +24,35 @@ header {
 
 .column-1 {
   float: left;
-  max-width: 45%;
+  width: 47%;
   border: 2px solid black;
   background-color: lightblue;
   padding: 10px;
+  margin-right: 10px;
 }
 
 .column-2 {
   float: right;
   background-color: lightblue;
-  max-width: 45%;
+  width: 47%;
   border: 2px solid black;
-  vertical-align: top;
-  padding: 10px 10px 65px 10px;
+  padding: 10px 10px 30px 10px;
+  margin-left: 10px;
 }
 
 summary {
   background-color: #3399ff;
 }
 
+
 footer {
-  display: inline-block;
-  max-width: 100%;
+  float: bottom;
+  margin-top: 100px; 
+  position: relative;
+  top: 25px;
+  text-align: center;
+}
+
+body {
+  position: relative;
 }
