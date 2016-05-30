@@ -13,10 +13,9 @@ def encrypt(string)
       counter +=1
     end
   end
-  p string
+  #p 
+  string
 end
-
-#Decrypt method
 
 def decrypt(string)
   counter = 0
@@ -32,8 +31,22 @@ def decrypt(string)
       counter +=1
     end
   end
-  p string
+  #p 
+  string
+end
+
+print "Would you like to encrypt or decrypt?"
+operation = gets.chomp
+if operation == "encrypt"
+  print "Please enter your current password"
+  password = gets.chomp
+  p "Your secret password is #{encrypt(password)}"
+elsif operation == "decrypt"
+  print "Please enter the secret password"
+  password = gets.chomp
+  p "Your current password is #{decrypt(password)}"
+else puts "Error, you failed!"
 end
 
 
-decrypt(encrypt("swordfish"))
+# decrypt(encrypt("swordfish")) this nested method call works because the methods return value of encrypted or decrypted string so the return value is almost always a string which is the correct input for each method.
