@@ -1,0 +1,108 @@
+Elevator Algorithm:
+-Find current floor #
+-Find destination floor #
+-If destination floor # = current floor
+  -Congrats you have arrived!
+-Elsif destination > current
+  - Find and press upward facing triangle button to summon elevator
+-Else destination < current
+  - Find and press downward facing triangle to summon elevator.
+-Until elevator arrives, wait quietly away from the elevator doors.
+-When elevator arrives, wait for current passengers to exit.
+-If there are elderly, disabled, or other persons requiring assistance, hold elevator door open.
+-Else enter elevator
+-If elevator passengers prevent reading and reaching floor numbers
+  -Speak at slightly above normal volume "please press [destination floor #], thank you!"
+  -Until current floor # equals destination floor #
+    -Wait quietly away from elevator doors and don't start any trouble
+  -Once current floor # = destination floor #
+    -Speak again at slightly above normal volume "this is my floor, excuse me please"
+    -If path is clear to exit elevator
+      -continue to destination
+    -Elsif repeat "this is my floor excuse me please"
+        -If path is clear
+          -Proceed to destination
+        -Else speak at low volume "out of my way meatbags"
+          -Proceed at low speed to destination
+          -Ignore usual obstacle rules
+-Else proceed to examine elevator buttons.
+-With [destination floor #] containing digits [d1,d2,d3]
+  -If d1 = 0
+    -Proceed to two-digit analysis
+  -Else find all elevator buttons with integers [x1,x2,x3] where x1 = d1
+    -From set of buttons where x1 = d1 select only buttons where x2 = d2
+    -From set of buttons where x1 = d1 and x2 = d2 select button where x3 = d3 and push button until lit or moderate force no longer produces button motion.
+-With [destination floor #] containing digits [0, d2, d3]
+  -If d2 = 0 
+    -proceed to single digit analysis
+  -Else find all elevator buttons with integers [0, x2, x3] where x2 = d2
+    -From set of buttons where x2 = d2 select button where x3 = d3 and push button until lit or moderate force no longer produces button motion. 
+With destination floor # containing digits [0, 0, d3]
+  -If d3 = 0
+    -Find all buttons with strings "B, L, LL, G, B1"
+    -Search for button with integer 1
+      - If button 1 exists press only one button with matching string in this order
+        - [L,G,LL,B]
+      - Else press only one button with matching string in this order
+        - [G,LL,B,B1,L]
+  Elsif d3 = 1
+    -Search for button with integer 1
+      - If button 1 exists press it
+      - Else press only one button with matching string in this order
+        - [L,G,LL,B]
+  Elsif d3 < 0
+    -Find all buttons of form B[y] where y is an integer
+      -from set of buttons select button where y = |d3| and press it.
+  Else find all buttons with digits [0,0,d3]
+    - compare each button [d3] to destination floor # until d3 = destination #
+    - press button
+  -Until current floor # equals destination floor #
+    -Wait quietly away from elevator doors and don't start any trouble
+  -Once current floor # = destination floor #
+    -Speak again at slightly above normal volume "this is my floor, excuse me please"
+    -If path is clear to exit elevator
+      -continue to destination
+    -Else repeat x2 "this is my floor excuse me please"
+        -If path is clear
+          -Proceed to destination
+        -Else speak at low volume "out of my way meatbags"
+          -Proceed at low speed to destination
+          -Ignore usual obstacle rules
+  End
+
+Make frozen pizza
+
+-Enter kitchen
+  -proceed north 3ft and turn 90 degrees right
+  -find & press button sequence "Bake", "3", "7", "5", "Start"
+  -turn 90 degrees left and proceed 2 ft north
+  -turn 90 degrees left and proceed 4 ft west
+  -find and pull handle on left door until door angle = 90 degrees
+  -use arm to grasp and hold box on shelf 2.5ft ahead and 3.5ft height
+  -pull box 1ft south and 1ft east
+  -close door 
+  -move 2ft east, lower box to encounter resistance, then release
+  -search all text on box for string "open here"
+    -if string match, remove side of box where match occurs
+    -else remove box side with lowest area
+  -remove items inside box
+  -remove plastic wrap
+  -remove cardboard underneath
+  -wait until temp on oven == 375
+  -open oven door
+  -insert pizza
+  -set timer for 21 minutes
+  -retrieve plate
+  -when timer == 0 press timer and open oven door
+  -remove pizza and set on top of plate
+  -say "Pizza is ready but be careful don't burn your mouth" at volume LOUD
+  END
+  
+
+
+
+          
+
+
+
+
