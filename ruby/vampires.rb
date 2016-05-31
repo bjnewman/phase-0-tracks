@@ -64,7 +64,19 @@ else detect_vamp = "Results inconclusive"
 end
 
 
-p "Your vampire detection status is #{detect_vamp}, congratualtions!"
+puts "Please enter your allergies one at a time, when you are finished please type done"
+allergy = ""
+until allergy == "sunshine"
+    allergy = gets.chomp
+    if allergy == "sunshine"
+      detect_vamp = "Probably a vampire"
+    end
+    if allergy == "done"
+     break
+  end
+end
+
+puts "Your vampire detection status is #{detect_vamp}, congratualtions!"
 counter +=1
 end
 
