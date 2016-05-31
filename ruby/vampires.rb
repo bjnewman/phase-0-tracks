@@ -1,3 +1,11 @@
+#Multiple employee handling
+
+puts "How many employees will be processed during this session?"
+employee_num = gets.chomp
+employee_num = employee_num.to_i
+
+counter = 0
+until  counter >= employee_num do
 
 #Questions to gather new employee data
 
@@ -56,5 +64,7 @@ else detect_vamp = "Results inconclusive"
 end
 
 
-p detect_vamp
-  
+p "Your vampire detection status is #{detect_vamp}, congratualtions!"
+counter +=1
+end
+
