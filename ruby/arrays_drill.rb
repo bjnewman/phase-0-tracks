@@ -1,3 +1,24 @@
+#define method that adds three values to an array
+def release_2(new, new2, new3)
+  build_array = []
+  build_array = build_array + [new, new2, new3] 
+end
+release_2("one", "two", "three")
+p release_2
+
+#Release 2, step 2
+def add_array(arr, new)
+  # build_array = ["one", "two", "three"]
+  add_to_array = [arr]
+  add_to_array = add_to_array << new
+end
+
+p add_array([1, 2], "three")
+p add_array([2, 4, 6, 8], "four")
+p add_array(["lions", "tigers", "and bears"], 5)
+
+
+# Realease 1
 #initial empty array
 new_array = []
 p new_array
