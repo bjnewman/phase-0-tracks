@@ -38,7 +38,7 @@ puts "Does this project include the purchase of a new property:"
   client_bio[:new_property] = true
   end
 #Unless project includes nursery or new property ask for brief description (convert to string and add for key other_reason)
-unless client_bio[:new_baby] && client_bio[:new_property]
+unless (client_bio[:new_baby] || client_bio[:new_property])
   puts "Please include a brief description of the reason for hiring our firm:"
   client_bio[:other_reason] = gets.chomp
 end
@@ -58,7 +58,7 @@ if  new_entry != "none"
   if client_bio.has_key?(new_entry.to_sym)
     #prompt user for new value and update value
     puts "Please enter the updated client info for the #{new_entry}"
-    new_value = get.chomp
+    new_value = gets.chomp
     client_bio[new_entry.to_sym] = new_value
   end
 end
