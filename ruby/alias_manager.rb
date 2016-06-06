@@ -54,6 +54,9 @@ codename = next_name_array.join
 puts codename
 spies[spy] = codename
 end
+#deletes quit entry from spies hash
+spies = spies.delete_if {|realname| realname == "quit"}
+#print data entered by iterating over hash of spy realnames and codenames to print with sub values
 spies.each {|realname, codename| puts "#{realname} is a spy whose codename is #{codename}"}
 #target is "Vussit Gimodoe"
 
