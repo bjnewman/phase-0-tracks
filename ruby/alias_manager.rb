@@ -1,17 +1,23 @@
 #Change entry of "fname lname" to "lname fname"
-spy = "Felicia Torres"
-
+puts "Please enter a new spy name to receive a codename, or enter 'quit' to end program."
+spy = ""
+until spy == "quit" 
+  spy = gets.chomp
+  if spy == "quit"
+    break
+  end
+  
 def nameswap(example)
   example_array = example.split(' ')
   example_encoded = example_array.rotate.join(' ')
 end
 
 #debug nameswap method
-p nameswap(spy)
+#p nameswap(spy)
 
 #split name into arrays
 name_array = nameswap(spy).chars
-p name_array
+#p name_array
 
 vowels = ["a", "e", "i", "o", "u" ]
 near_vowels = ["d", "h", "n", "t"]
@@ -25,7 +31,7 @@ if letter == " "
 elsif vowels.include?(letter.downcase)
   letter.tr('aeiouAEIOU', 'eiouaEIOUA')
   
-#if letter is w/in 1 of vowel should skip [d,D,h,H,n,N,t,T] -> [f,F,j,J,p,P,v,V]
+#if letter immediately precedes vowel should skip [d,D,h,H,n,N,t,T] -> [f,F,j,J,p,P,v,V]
 
 elsif near_vowels.include?(letter.downcase)
   letter = letter.tr('dDhHnNtT', 'fFjJpPvV')
@@ -40,10 +46,9 @@ else
 end
 end
 
-p next_name_array
+#p next_name_array
 codename = next_name_array.join
-p codename
-
-
+puts codename
+end
 #target is "Vussit Gimodoe"
 
