@@ -1,8 +1,11 @@
 #Change entry of "fname lname" to "lname fname"
 puts "Please enter a new spy name to receive a codename, or enter 'quit' to end program."
 spy = ""
+#create empty hash to populate with key 
+spies = {}
 until spy == "quit" 
   spy = gets.chomp
+  spies[spy] = spy 
   if spy == "quit"
     break
   end
@@ -49,6 +52,8 @@ end
 #p next_name_array
 codename = next_name_array.join
 puts codename
+spies[spy] = codename
 end
+spies.each {|realname, codename| puts "#{realname} is a spy whose codename is #{codename}"}
 #target is "Vussit Gimodoe"
 
