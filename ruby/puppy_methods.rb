@@ -1,7 +1,11 @@
 # Define puppy class and define fetch instance method.
-# Insert driver code to test puppy class and instance method.
+
 
 class Puppy
+
+  def initialize
+    puts "Initializing new puppy instance..."
+  end
 
   def fetch(toy)
     puts "I brought back the #{toy}!"
@@ -26,6 +30,7 @@ class Puppy
 
 end
 
+# Insert driver code to test puppy class and instance methods.
 fido = Puppy.new
 p fido.fetch("bone")
 p fido.speak(3)
