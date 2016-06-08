@@ -35,7 +35,7 @@ end
 
 # test method
 
-our_list = create_list("carrots apples cereal pizza")
+#our_list = create_list("carrots apples cereal pizza")
 
 # Method to add an item to a list
 # input: item name and optional quantity
@@ -46,7 +46,7 @@ def add_more_food (our_list, item, quantity)
   # output: hash full of items with new item
 end
 
-add_more_food(our_list, "bacon", 6)
+#add_more_food(our_list, "bacon", 6)
 
 
 # Method to remove an item from the list
@@ -58,19 +58,40 @@ def remove_food(our_list, item)
   # output: the hash without that item
 end
 
-remove_food(our_list, "carrots")
+#remove_food(our_list, "carrots")
 
 def update_quantity(our_list, food, new_quantity)
   our_list[food] = new_quantity
   "#{food}, #{new_quantity}"
 end
 
-update_quantity(our_list, "apples", 7)
-p pretty_print(our_list)
+#update_quantity(our_list, "apples", 7)
+#p pretty_print(our_list)
 # Method to update the quantity of an item
 # input: item to be updated and new quantity
 # steps: point to the item and update the total quantity
 # output: the key with it's new value via pretty_print
+
+
+#Release 3  test methods 
+#create new list
+new_grocery = create_list("")
+
+#add items to list
+add_more_food(new_grocery, "Lemonade", 2)
+add_more_food(new_grocery, "Tomotoes", 3)
+add_more_food(new_grocery, "Onions", 1)
+add_more_food(new_grocery, "Ice_Cream", 4)
+
+#remove lemonade
+remove_food(new_grocery, "Lemonade")
+
+#update ice cream quantity
+update_quantity(new_grocery, "Ice_Cream", 1)
+
+#print new list nicely
+pretty_print(new_grocery)
+
 
 
 
