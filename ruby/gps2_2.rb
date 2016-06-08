@@ -35,35 +35,38 @@ end
 
 # test method
 
-#our_list = create_list("carrots apples cereal pizza")
+our_list = create_list("carrots apples cereal pizza")
 
 # Method to add an item to a list
 # input: item name and optional quantity
-def add_more_food (our_list, item, quantity)
-  # steps: define method, store names of items as keys 
-  #      and quants as values to our hash
-  our_list[item] = quantity
-  # output: hash full of items with new item
-end
+# def add_more_food (our_list, item, quantity)
+#   # steps: define method, store names of items as keys 
+#   #      and quants as values to our hash
+#   our_list[item] = quantity
+#   # output: hash full of items with new item
+# end 
+# not necessary equiv to inside method assign new key and value if don't exist
 
 #add_more_food(our_list, "bacon", 6)
+our_list["bacon"] = 6
 
 
 # Method to remove an item from the list
 
-def remove_food(our_list, item)
-  # input: specific item in list
-  # steps: point it to the individual item and delete
-  our_list.delete(item)
-  # output: the hash without that item
-end
+# def remove_food(our_list, item)
+#   # input: specific item in list
+#   # steps: point it to the individual item and delete
+#   our_list.delete(item)
+#   # output: the hash without that item
+# end
 
-#remove_food(our_list, "carrots")
+#remove_food(our_list, "carrots")   remove food unnecessary method does same as .delete built-in
 
-def update_quantity(our_list, food, new_quantity)
-  our_list[food] = new_quantity
-  "#{food}, #{new_quantity}"
-end
+# def update_quantity(our_list, food, new_quantity)
+#   our_list[food] = new_quantity
+#   "#{food}, #{new_quantity}"
+# end 
+# update quantity function unnecessary can just assign new value based on key
 
 #update_quantity(our_list, "apples", 7)
 #p pretty_print(our_list)
@@ -78,17 +81,21 @@ end
 new_grocery = create_list("")
 
 #add items to list
-add_more_food(new_grocery, "Lemonade", 2)
-add_more_food(new_grocery, "Tomotoes", 3)
-add_more_food(new_grocery, "Onions", 1)
-add_more_food(new_grocery, "Ice_Cream", 4)
+# add_more_food(new_grocery, "Lemonade", 2)
+# add_more_food(new_grocery, "Tomotoes", 3)
+# add_more_food(new_grocery, "Onions", 1)
+# add_more_food(new_grocery, "Ice_Cream", 4)
 
+new_grocery["Lemonade"] = 2
+new_grocery["Tomatoes"] = 3
+new_grocery["Onions"] = 1
+new_grocery["Ice_Cream"] = 4
 #remove lemonade
-remove_food(new_grocery, "Lemonade")
+new_grocery.delete("Lemonade")
 
 #update ice cream quantity
-update_quantity(new_grocery, "Ice_Cream", 1)
-
+#update_quantity(new_grocery, "Ice_Cream", 1)
+new_grocery["Ice_Cream"] = 1
 #print new list nicely
 pretty_print(new_grocery)
 
