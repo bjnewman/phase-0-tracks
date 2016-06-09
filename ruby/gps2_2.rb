@@ -47,7 +47,8 @@ our_list = create_list("carrots apples cereal pizza")
 # end 
 # not necessary equiv to inside method assign new key and value if don't exist
 
-#add_more_food(our_list, "bacon", 6)
+
+#add_more_food(our_list, "bacon", 6) dont use method the next line is simpler and faster
 our_list["bacon"] = 6
 
 
@@ -102,9 +103,12 @@ pretty_print(new_grocery)
 
 
 
-
-
-
-
+# RELEASE 5 - Reflect
+# -I found that the provided template of input/steps/output was a helpful guide. Amanda and I collaborated fairly well on the pseudocoding section but we definitely struggled at the beginning to focus on each method and tried to move a little too quickly.
+# -In this case given the relationship between the grocery list item and its quantity we felt a hash was the most appropriate structure, the best solution that i can think of to solve this with only arrays would need to nest the arrays and that might make the code less readable.
+# -The object that a method returns is determined by the last line of the method and can be any data type.
+# -We can pass any object into a method as an argument, this could be a variable, an integer, a string, or an entire structure of nested arrays and hashes
+# -Passing information between methods requires making the output of one method a parameter for the next, as we did when the create list method returned the our_list hash and our following methods used that as a required parameter
+# -I think that this helped me understand the criteria for figuring out whether creating a method is useful and also how learned more about how pseudocoding in particular can help with avoiding bugs in creating methods by focusing on input and output and chaining them together.
 
 
