@@ -1,6 +1,8 @@
 #Declare a Santa class with three instance methods
 
 class Santa
+  attr_reader :age, :ethnicity
+  attr_accessor :gender
 #define initialize method that outputs initialization status
 #updated to include attributes in initialize method with two passed in as arguments and two set to default
 #reindeer ranking is default order of preference  
@@ -30,17 +32,18 @@ class Santa
     @reindeer_ranking.delete(reindeer_name)
     @reindeer_ranking.push(reindeer_name)
   end
-#define setter method to allow gender to be writable outside class
-  def gender=(new_gender)
-    @gender = new_gender
-  end
-#include two getter methods for age and ethnicity attributes
-  def age
-    @age
-  end
-  def ethnicity
-    @ethnicity
-  end
+# #define setter method to allow gender to be writable outside class
+#   def gender=(new_gender)
+#     @gender = new_gender
+#   end
+# #include two getter methods for age and ethnicity attributes
+#   def age
+#     @age
+#   end
+#   def ethnicity
+#     @ethnicity
+#   end
+#REFACTORED for RELEASE 3 getter and setters replaced with attr reader and attr accessor at lines 4-5
 end
 
 #add driver code to test class and method definition
@@ -53,12 +56,12 @@ end
 
 #RELEASE 2 update driver code to test attribute-changing methods and getter/setters
 tim_allen = Santa.new("male", "white")
-tim_allen.age
-tim_allen.celebrate_birthday
-tim_allen.get_mad_at("Vixen")
-tim_allen.gender=("ask again later")
-tim_allen.age
-tim_allen.ethnicity
+p tim_allen.age
+p tim_allen.celebrate_birthday
+p tim_allen.get_mad_at("Vixen")
+p tim_allen.gender=("ask again later")
+p tim_allen.age
+p tim_allen.ethnicity
 
 # #RELEASE 1 add diverse initializations as driver code
 # santas = []
