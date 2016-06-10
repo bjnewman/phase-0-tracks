@@ -19,6 +19,28 @@ class Santa
   def eat_milk_and_cookies(cookie_type = "")
     p "That was a good #{cookie_type}!"
   end
+#add three attribute-changing methods
+#define method to increment age by 1
+  def celebrate_birthday
+    @age += 1
+  end
+#define method to move reindeer to end of reindeer rankings
+  def get_mad_at(reindeer_name)
+    #steps - remove reindeer_name from @reindeer_ranking and push
+    @reindeer_ranking.delete(reindeer_name)
+    @reindeer_ranking.push(reindeer_name)
+  end
+#define setter method to allow gender to be writable outside class
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+#include two getter methods for age and ethnicity attributes
+  def age
+    @age
+  end
+  def ethnicity
+    @ethnicity
+  end
 end
 
 #add driver code to test class and method definition
@@ -29,21 +51,30 @@ end
 # #prints to console and returns nil
 # tim_allen.speak
 
-#RELEASE 1 add diverse initializations as driver code
-santas = []
-#make this unnecessarily complicated but to practice nested data structures make a hash with the keys as the attributes and values as array of potential states
-sample_attributes = {
-  sample_genders: ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A", "prefer not to say", "ask again later"],
-  sample_ethnicities: ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature", "N/A", "", "citizen of the world"]}
+#RELEASE 2 update driver code to test attribute-changing methods and getter/setters
+tim_allen = Santa.new("male", "white")
+tim_allen.age
+tim_allen.celebrate_birthday
+tim_allen.get_mad_at("Vixen")
+tim_allen.gender=("ask again later")
+tim_allen.age
+tim_allen.ethnicity
 
-# p sample_attributes[:sample_genders]  
+# #RELEASE 1 add diverse initializations as driver code
+# santas = []
+# #make this unnecessarily complicated but to practice nested data structures make a hash with the keys as the attributes and values as array of potential states
+# sample_attributes = {
+#   sample_genders: ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A", "prefer not to say", "ask again later"],
+#   sample_ethnicities: ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature", "N/A", "", "citizen of the world"]}
 
-sample_attributes[:sample_genders].length.times do |i|
-  santas << Santa.new(
-    sample_attributes[:sample_genders[i]],
-    sample_attributes[:sample_ethnicities[-i]])
-end
-p santas
+# # p sample_attributes[:sample_genders]  
+
+# sample_attributes[:sample_genders].length.times do |i|
+#   santas << Santa.new(
+#     sample_attributes[:sample_genders[i]],
+#     sample_attributes[:sample_ethnicities[-i]])
+# end
+# #p santas
 
 
 
