@@ -17,4 +17,31 @@ for (var i = 0; i < horseNames.length; i++) {
     horses[horseNames[i]] = horseColors[i];
 }
 
-console.log(horses)
+//console.log(horses)
+
+//write a constructor function for a car, with a few properties including one that is a function
+function Car(brand, model, year) {
+
+    console.log("A brand new (slightly used) car:", this);
+
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+
+    this.honk = function() {console.log("Honk!");}
+    this.age = function() {
+     return (2016 - this.year);
+    }
+}
+
+//build some cars and driver code to test the object properties including functions
+console.log("I'm gonna build some cars, watch me!");
+var bensCar = new Car("Honda", "Civic", 1996);
+console.log("boop.....beep....");
+console.log("Wonderful! You have excellent taste in automobiles to select a " + bensCar.brand + bensCar.model + ".");
+console.log("" + bensCar.age() + "years.");
+bensCar.year = 1997;
+console.log("" + bensCar.age() + "years.");
+
+var dadsCar = new Car("Toyota", "Prius", 2006);
+dadsCar.honk()
