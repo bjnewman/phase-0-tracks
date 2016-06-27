@@ -1,4 +1,7 @@
-#overall goal create standings for board game night
+#NOTE FOR DBC AND REVIEWERS AS OF 11:35 AM CDT this is still obviously a work in progress, I submitted this version to satisfy 
+#the requirements for week 8 but I will keep working on this throughout today until it meets my standards
+
+#overall goal create standings for board game night and UI to view, edit, add new players, add results, view detailed stats
 require 'sqlite3'
 
 #driver code to initialize db
@@ -78,13 +81,35 @@ Please enter the number of the option you would like to select:
 #Overall wins, overall points (build as sum of other wins and points columns)
 
 #enter match result
-# => who played
-# => which game
+when 3
+#which game
+puts "Which game did you play?
+1 - Catan
+2 - Terra Mystica
+3 - Seventh Wonders"
+game_played = gets.chomp.to_i
+if game_played == 1
+  game_won == catan_wins
+elsif game_played == 2
+  game_won == terra_myst_wins
+else
+  game_won == svth_wond_wins
+end
 # => get results (1st,2nd,3rd)
+puts "Who won {game_played}"
+winner = gets.chomp
+winner_array = db.execute("SELECT #{game_won} FROM standings_2016 WHERE player_name= #{winner}")
 #Overall wins, overall points (build as sum of other wins and points columns)
+winner_array[game_played]
+#view player stats
+when 4
+  puts "Which player would you like to see stats for?"
+  pname = gets.chomp
+  db.execute("SELECT * FROM standings_2016 WHERE player_name= #{pname}")
 
 #add new player
   #name
+when 5
   # puts "What is the new player's name?"
   # pname=gets.chomp
   # db.execute("INSERT INTO standings_2016 (player_name, def_champ, catan_wins, catan_points, terra_myst_wins, terra_myst_points, svth_wond_wins, svth_wond_points, overall_wins, overall_points) VALUES (?,?,?,?,?,?,?,?,?,?)", [pname, 'false', 0, 0, 0, 0, 0, 0, 0, 0])
