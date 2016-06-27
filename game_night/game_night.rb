@@ -79,77 +79,79 @@ while option != 7
 #Overall wins, overall points (build as sum of other wins and points columns)
 
 #enter match result
-when 3
+  when 3
 #which game
-puts "Which game did you play?
-1 - Catan
-2 - Terra Mystica
-3 - Seven Wonders"
-game_played = gets.chomp.to_i
-if game_played == 1
-  game_won == catan_wins
-elsif game_played == 2
-  game_won == terra_myst_wins
-else
-  game_won == svth_wond_wins
-end
+    puts "Which game did you play?
+          1 - Catan
+          2 - Terra Mystica
+          3 - Seven Wonders"
+    game_played = gets.chomp.to_i
+    if game_played == 1
+    game_won == catan_wins
+    elsif game_played == 2
+    game_won == terra_myst_wins
+    else
+    game_won == svth_wond_wins
+    end
 # => get results (1st,2nd,3rd)
-puts "Who won {game_played}"
-winner = gets.chomp
+    puts "Who won {game_played}"
+    winner = gets.chomp
 #sub main for points in string to get matching points column in db
-game_points = game_won.tr(main, points)
-winner_wins = db.execute("SELECT #{game_won} FROM standings_2016 WHERE player_name= #{winner}")
-winner_wins[0] = winner_wins[0] + 1  
-db.execute("UPDATE standings_2016 SET #{game_won} = ? WHERE player_name= #{winner}", [winner_array[0]])
-winner_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name= #{winner}")
-winner_points[0] = winner_points + 3
+    game_points = game_won.tr(main, points)
+    winner_wins = db.execute("SELECT #{game_won} FROM standings_2016 WHERE player_name= #{winner}")
+    winner_wins[0] = winner_wins[0] + 1  
+    db.execute("UPDATE standings_2016 SET #{game_won} = ? WHERE player_name= #{winner}", [winner_array[0]])
+    winner_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name= #{winner}")
+    winner_points[0] = winner_points + 3
 #second
-puts "Who placed second?"
-second = gets.chomp
-second_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name= #{second}")
-second_points[0] = second_points[0] + 2
-db.excecute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= #{second}", [second_array[0]])
+    puts "Who placed second?"
+    second = gets.chomp
+    second_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name= #{second}")
+    second_points[0] = second_points[0] + 2
+    db.excecute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= #{second}", [second_array[0]])
 #third
-puts "Who placed third?"
-third = gets.chomp
-third_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name = #{third}")
-third_points[0] = third_points[0] + 1
-db.execute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= #{third}", [third_points[0]])
+    puts "Who placed third?"
+    third = gets.chomp
+    third_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name = #{third}")
+    third_points[0] = third_points[0] + 1
+    db.execute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= #{third}", [third_points[0]])
 #view player stats
-when 4
-  puts "Which player would you like to see stats for?"
-  pname = gets.chomp
-  player_stats = db.execute("SELECT * FROM standings_2016 WHERE player_name= #{pname}")
-  p player_stats
+  when 4
+    puts "Which player would you like to see stats for?"
+    pname = gets.chomp
+    player_stats = db.execute("SELECT * FROM standings_2016 WHERE player_name= #{pname}")
+    p player_stats
 #add new player
   #name
-when 5
-  puts "What is the new player's name?"
-  pname=gets.chomp
-  db.execute("INSERT INTO standings_2016 (player_name, def_champ, catan_wins, catan_points, terra_myst_wins, terra_myst_points, svth_wond_wins, svth_wond_points, overall_wins, overall_points) VALUES (?,?,?,?,?,?,?,?,?,?)", ['#{pname}', 'false', 0, 0, 0, 0, 0, 0, 0, 0])
+  when 5
+    puts "What is the new player's name?"
+    pname=gets.chomp
+    db.execute("INSERT INTO standings_2016 (player_name, def_champ, catan_wins, catan_points, terra_myst_wins, terra_myst_points, svth_wond_wins, svth_wond_points, overall_wins, overall_points) VALUES (?,?,?,?,?,?,?,?,?,?)", [pname, 'false', 0, 0, 0, 0, 0, 0, 0, 0])
   #any points to enter
-  puts "Does #{pname} have any points to enter(y/n)"
+    puts "Does #{pname} have any points to enter(y/n)"
   #if yes which game
-  prev_bool=gets.chomp
-  if prev_bool == y
+    prev_bool=gets.chomp
+    if prev_bool == "y"
     puts "Which game are you adding points to:
     1 - Catan
     2 - Terra Mystica
     3 - 7 Wonders?"
     game_played = gets.chomp.to_i
-    if game_played == 1
+      if game_played == 1
        game_points == catan_points
-    elsif game_played == 2
+      elsif game_played == 2
       game_points == terra_myst_points
-    else
+      else
       game_won == svth_wond_points
-    end
+      end
     puts "And how many points should #{pname} have?"
     prev_points=gets.chomp.to_i
     db.execute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= #{pname}", [prev_points])
-  else
-  end    
-  
+    else
+      break
+    end    
+  end
+end
 #view player stats
   #display overall standing, standing in each game, win % overall and each game and sortable, 
 
