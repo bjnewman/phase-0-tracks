@@ -65,3 +65,44 @@ SELECT * FROM employees;
 4|Asha Mohan|Sales|120000|false|2
 5|Calvin Roche|Account Manager|120000|false|2
 6|Sergio Chang|Account Executive|140000|false|2
+
+RELEASE 3
+
+Different join commands and output:
+
+SELECT * FROM employees LEFT JOIN departments ON employees.department_id = departments.id;
+
+1|Jim Jackson|Junior Engineer|100000|false|1|1|Engineering|Main
+2|Batman Stephens|Engineer|120000|false|1|1|Engineering|Main
+3|Keisha Franklin|Lead Engineer|150000|false|1|1|Engineering|Main
+4|Asha Mohan|Sales|120000|false|2|2|Sales|Main
+5|Calvin Roche|Account Manager|120000|false|2|2|Sales|Main
+6|Sergio Chang|Account Executive|140000|false|2|2|Sales|Main
+
+SELECT * FROM employees RIGHT JOIN departments ON employees.department_id = departments.id; 
+
+NOTE: Error: RIGHT and FULL OUTER JOINs not currently supported in sqlite3
+
+SELECT * FROM employees INNER JOIN departments ON employees.department_id = departments.id;
+
+1|Jim Jackson|Junior Engineer|100000|false|1|1|Engineering|Main
+2|Batman Stephens|Engineer|120000|false|1|1|Engineering|Main
+3|Keisha Franklin|Lead Engineer|150000|false|1|1|Engineering|Main
+4|Asha Mohan|Sales|120000|false|2|2|Sales|Main
+5|Calvin Roche|Account Manager|120000|false|2|2|Sales|Main
+6|Sergio Chang|Account Executive|140000|false|2|2|Sales|Main
+
+(note: same as left join since all current employee departments are in departments table)
+
+SELECT * FROM employees INNER JOIN departments ON employees.department_id = departments.id WHERE employees.salary < 130000;
+
+1|Jim Jackson|Junior Engineer|100000|false|1|1|Engineering|Main
+2|Batman Stephens|Engineer|120000|false|1|1|Engineering|Main
+4|Asha Mohan|Sales|120000|false|2|2|Sales|Main
+5|Calvin Roche|Account Manager|120000|false|2|2|Sales|Main
+
+SELECT employees.name, departments.name FROM employees LEFT JOIN departments ON employees.department_id=departments.id WHERE departments.name="Engineering";
+
+Jim Jackson|Engineering
+Batman Stephens|Engineering
+Keisha Franklin|Engineering
