@@ -86,35 +86,44 @@ while option != 7
           2 - Terra Mystica
           3 - Seven Wonders"
     game_played = gets.chomp.to_i
+    game_won = ""
     if game_played == 1
-    game_won == catan_wins
+    game_won == <<-SQL 
+    catan_wins 
+    SQL
     elsif game_played == 2
-    game_won == terra_myst_wins
+    game_won == <<-SQL 
+    terra_myst_wins 
+    SQL
     else
-    game_won == svth_wond_wins
+    game_won == <<-SQL 
+    svth_wond_wins 
+    SQL
     end
 # => get results (1st,2nd,3rd)
-    puts "Who won {game_played}"
+    puts "Who won?"
     winner = gets.chomp
-#sub main for points in string to get matching points column in db
-    game_points = game_won.tr(main, points)
-    winner_wins = db.execute("SELECT #{game_won} FROM standings_2016 WHERE player_name= #{winner}")
-    winner_wins[0] = winner_wins[0] + 1  
-    db.execute("UPDATE standings_2016 SET #{game_won} = ? WHERE player_name= #{winner}", [winner_array[0]])
-    winner_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name= #{winner}")
+#sub wins for points in string to get matching points column in db
+    game_points = game_won.tr("wins", "points")
+  #collect winner win total for game won and add 1, and update standings
+    winner_wins = db.execute("SELECT * FROM standings_2016 WHERE player_name= '#{winner}'")
+    winner_wins[game_played * 2 +1] = winner_wins[game_played * 2 + 1] + 1  
+    db.execute("UPDATE standings_2016 SET #{game_won} = ? WHERE player_name= '#{winner}'", [winner_array[0]])
+  #update winner points for game won
+    winner_points = db.execute("SELECT * FROM standings_2016 WHERE player_name= '#{winner}'")
     winner_points[0] = winner_points + 3
 #second
     puts "Who placed second?"
     second = gets.chomp
-    second_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name= #{second}")
+    second_points = db.execute("SELECT (#{game_points}) FROM standings_2016 WHERE player_name= '#{second}'")
     second_points[0] = second_points[0] + 2
-    db.excecute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= #{second}", [second_array[0]])
+    db.excecute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= '#{second}'", [second_array[0]])
 #third
     puts "Who placed third?"
     third = gets.chomp
-    third_points = db.execute("SELECT #{game_points} FROM standings_2016 WHERE player_name = #{third}")
+    third_points = db.execute("SELECT '#{game_points}' FROM standings_2016 WHERE player_name = '#{third}'")
     third_points[0] = third_points[0] + 1
-    db.execute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= #{third}", [third_points[0]])
+    db.execute("UPDATE standings_2016 SET '#{game_points}' = ? WHERE player_name= '#{third}'", [third_points[0]])
 #view player stats
   when 4
     puts "Which player would you like to see stats for?"
@@ -146,7 +155,7 @@ while option != 7
       end
     puts "And how many points should #{pname} have?"
     prev_points=gets.chomp.to_i
-    db.execute("UPDATE standings_2016 SET #{game_points} = ? WHERE player_name= #{pname}", [prev_points])
+    db.execute("UPDATE standings_2016 SET ('#{game_points}'') = ? WHERE player_name= '#{pname}'", [prev_points])
     else
       break
     end    
