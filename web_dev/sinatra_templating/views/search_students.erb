@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Search</title>
+</head>
+<body>
+
+Please enter student:
+<form action="/students/search" method="GET">
+  <input type="text" name="search" placeholder="search for name">
+  <button type="submit">Search</button>
+</form>
+
+<ul>
+  <%search_term = params[:search] ? params[:search] : "" %>
+  <%search_result = @db_2.execute("SELECT * FROM students WHERE name LIKE ?", '%'+search_term+'%') %>
+  <% search_result.each do |student| %>
+  <li><%= student["name"]%></li>
+  <% end %>
+</ul>
+
+</body>
+</html>
